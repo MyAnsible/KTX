@@ -1,0 +1,11 @@
+1.first create a ansible.cfg in /tmp directory
+2. create ansible.cfg in your project directory
+3. create .ansible.cfg in your home directory
+4. create ansible.cfg in /etc/ansible
+
+export ANSIBLE_CONFIG=/tmp/ansible.cfg
+
+Try testing now
+
+ansible --version; what whould you be able to see as default configurtion file?
+remove ansible.cfg file you created and see how defaults ansible.cfg value being changed.
