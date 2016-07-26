@@ -16,9 +16,9 @@ ansible <hosts> -m file -a "dest=/tmp/hosts mode=600"
 ansible <hosts -m file -a "dest=/tmp/hosts mode=600 owner=student group=student"
 ansible <hosts> -m file -a "dest=/tmp/cts mode=755 owner=student group=student state=directory"
 ansible <hosts> -m file -a "dest=/tmp/cts state=absent"
-ansible <hosts> -m yum -a "name=httpd state=present"
-ansible <hosts> -m yum -a "name=tree state=latest"
-ansible <hosts> -m yum -a "name=tree state=absent"
+ansible <hosts> -m apt -a "name=httpd state=present"
+ansible <hosts> -m apt -a "name=tree state=latest"
+ansible <hosts> -m apt -a "name=tree state=absent"
 ansible <hosts> -m user -a "name=test password=ansibletest
 ansible <hosts> -m shell -a 'id'
 ansible <hosts> -m shell -a 'id' -u <other_remote_user>
