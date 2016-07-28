@@ -1,0 +1,19 @@
+---
+- hosts: mnode2
+  tasks:
+  - name: Install mariadb-server
+    apt:
+       name: mariadb-server
+       state: latest
+    when: inventory_hostname in groups["local"]
+    
+  - name: Find the postfix server status
+    command: /usr/bin/systemctl is-active postfix
+    ignore_errors: yes
+    register: result
+
+  - name: Restart Apache2 if postfix running
+    service:
+       name: apache2
+       state: restarted
+    when: result.rc == 0

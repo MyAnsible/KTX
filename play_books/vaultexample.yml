@@ -1,0 +1,14 @@
+##if required install python-cryptography for better performance
+---
+- name: Create 3 users
+  hosts: mnode2
+  remote_user: student
+  become: yes
+  var_files:
+    - test.yml
+  tasks:
+  - name: Creating users from test.yml
+    user: 
+      name: "{{ item.name }}"
+      passwd: "{{ item.pw | password_hash('sha512') }}"
+    with_items: "{{ new_users }}"

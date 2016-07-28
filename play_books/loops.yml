@@ -1,0 +1,78 @@
+##Playbook Conditionals
+---
+- hosts: mnodes
+  vars:
+     mail_services:
+        - postfix
+        - dovecat
+     alpha: [ 'a, 'b', 'c', 'd', 'e']
+     numbers: [ 1, 2, 3, 4 ]
+  tasks:
+  - name: Install postfix
+    apt: 
+       name: postfix
+       state: latest
+    tags:
+      - normal
+  - name: Install dovecat
+    apt: 
+       name: dovecat
+       state: latest
+    tags:
+      - normal
+
+  - name: Install packages using with_items loop
+    apt:
+       name: "{{ item }}"
+       state: latest
+    with_items:
+       - postfix
+       - dovecat
+    tags:
+      - withitems
+
+  - name: Install packages using loop and variables
+    apt:
+       name: "{{ item }}"
+       state: latest
+    with_items: "{{ mail_services }}"
+    tags: 
+      - withitems1
+
+
+  - name: copy files to different sources and different dests using loops
+    copy:
+       src: "{{ item.src }}"
+       dest: "{{ item.dest }}"
+    with_items:
+       - { src: '/tmp/test1.txt', dest: '/home/student/test1.txt'}
+       - { src: '/home/student/test2.txt', dest: '/tmp/test2.txt'}
+    tags:
+       - withitems2
+
+  - name: Read lines using with_lines
+    debug: 
+       msg: "I am from file {{ item }}"
+    with_lines:
+       - cat /tmp/test1.txt
+    tags:
+      - withlines
+
+  - name: List out files with_fileglob
+    copy: 
+       src: "{{ item }}" 
+       dest: "/tmp/"
+    with_fileglob:
+        - /home/student/day01/playbooks/*yml
+    tags:
+      - withfileglob
+
+  - name: Looping over parallel sets of data
+    debug: 
+       msg: "{{ item.0 }} and {{ item.1 }}"
+    with_together:
+       - "{{ alpha }}"
+       - "{{ numbers }}"
+    tags:
+      - withtogether
+        
