@@ -1,0 +1,11 @@
+- hosts: localhost
+  gather_facts: no
+  vars_prompt:
+  - name: armrg
+    prompt: Which ARM resource group you like to delete ?
+  tasks:
+  - name: Delete a resource group
+    azure_rm_resourcegroup:
+      name: "{{armrg}}"
+      state: absent
+      force: yes

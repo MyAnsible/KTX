@@ -1,0 +1,12 @@
+- hosts: local
+  vars:
+    sg: ktxsecgroup
+  tasks:
+  - name: List {{sg}} security group facts
+    azure_rm_securitygroup_facts:
+      resource_group: testing
+      name: "{{sg}}"
+    register: sgfacts
+  - name: Print sgfacts
+    debug:
+      var: sgfacts.ansible_facts.azure_securitygroups

@@ -1,0 +1,12 @@
+- hosts: local
+  tasks:
+  - name: Create Virtual network
+    azure_rm_virtualnetwork:
+      name: ktxvn
+      resource_group: testing
+      address_prefixes_cidr: 
+        - "10.1.0.0/16"
+        - "172.100.0.0/16"
+      dns_servers:
+        - "127.0.0.1"
+        - "127.0.0.2"

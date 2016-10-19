@@ -1,0 +1,11 @@
+- hosts: local
+  tasks:
+  - name: create a networ interface
+    azure_rm_networkinterface:
+      resource_group: testing
+      name: ktxni007
+      resource_group: testing
+      virtual_network_name: ktxvn
+      subnet_name: ktxsn007
+      security_group_name: ktxsecgroup
+      public_ip_address_name: ktxpubip007

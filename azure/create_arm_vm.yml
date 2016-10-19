@@ -1,0 +1,24 @@
+- hosts: local
+  vars:
+    sa: ktx007
+    rg: testing
+    ni: ktxni007
+  tasks:
+  - name: Create a Virtual Machine
+    azure_rm_virtualmachine:
+      resource_group: "{{rg}}"
+      name: ktxvm001
+      vm_size: Standard_DS2_v2
+      storage_account: "{{sa}}"
+      admin_username: rgodishela
+      ssh_password_enabled: false
+      ssh_public_keys:
+        - path: /home/rgodishela/.ssh/authorized_keys
+          key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWsXfCZa97VKas4OPE82h3oTu6irAiy7zlxBBNFO2gnaEkAdWjKVLjbGYAnNBs/HvgDomxs6VHvnatsLYbtB2MtEbAq1N/cMzukLlZh97PIrZRgstGpVxoLZ7y1HfJ2HXrG/7V68WQRiDEkdI151lgAdUHr2T8u9HLH/11v4POZNXqsCASnwYHao0dqOrjGdmvo6e1uUYUzUDviEIAExLDtbByzdcsB4gmzY6kwRGl+mYpk1/gvUyBcrFaAkY5V0UVVTtUVSUN+lgIIZZx8A7gvKTV52H3ttW7js43doEOT3/k7kfvT/8kOP3V01YbIklt1/FNQWKx44XbRdictLol rgodishela@hotmail.com"
+      network_interfaces: "{{ni}}"
+      image:
+        offer: UbuntuServer
+        publisher: canonical
+        sku: '16.04.0-LTS'
+        version: '16.04.201610130'
+      state: present

@@ -1,0 +1,11 @@
+- hosts: local
+  vars: 
+     ni: ktxni007
+  tasks:
+  - name: Delete Network Interface {{ ni }}
+    azure_rm_networkinterface:
+      resource_group: testing
+      name: {{ ni }}
+      state: absent
+       
+    

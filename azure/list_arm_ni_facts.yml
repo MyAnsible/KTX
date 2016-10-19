@@ -1,0 +1,10 @@
+- hosts: local
+  tasks:
+  - name: List Network Interface facts
+    azure_rm_networkinterface_facts:
+      resource_group: testing
+      name: ktxni007
+    register: nifacts
+  - name: Print nifacts
+    debug:
+       var: nifacts

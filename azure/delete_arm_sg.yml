@@ -1,0 +1,7 @@
+- hosts: local
+  tasks:
+  - name: Delete securtiy group {{ sg }}
+    azure_rm_securitygroup:
+      resource_group: testing
+      name: "{{ sg }}"
+      state: absent

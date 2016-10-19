@@ -1,0 +1,10 @@
+- hosts: local
+  tasks:
+  - name: List storage account facts
+    azure_rm_storageaccount_facts:
+      resource_group: testing
+      name: ktx007
+    register: safacts
+  - name: Print safacts
+    debug:
+       var: safacts

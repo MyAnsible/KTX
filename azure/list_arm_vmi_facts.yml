@@ -1,0 +1,42 @@
+- hosts: local
+  tasks:
+  - name: Get facts for a specific image
+    azure_rm_virtualmachineimage_facts:
+      location: eastus
+      publisher: OpenLogic
+      offer: CentOS
+      sku: '7.1'
+      version: '7.1.20160308'
+    register: openlogic_centos_facts
+
+  - name: List available versions
+    azure_rm_virtualmachineimage_facts:
+      location: eastus
+      publisher: OpenLogic
+      offer: CentOS
+      sku: '7.1'
+    register: openlogic_versions_facts
+
+  - name: List available offers
+    azure_rm_virtualmachineimage_facts:
+      location: eastus
+      publisher: OpenLogic
+    register: openlogic_publisher_facts
+
+  - name: List available publishers
+    azure_rm_virtualmachineimage_facts:
+      location: eastus
+    register: eastus_publishers_facts
+ 
+  - name: print openlogic_centos_facts
+    debug:
+      var: openlogic_centos_facts
+  - name: Print openlogic_versions_facts
+    debug:
+      var: openlogic_versions_facts
+  - name: Print openlogic_publisher_facts
+    debug:
+      var: openlogic_publisher_facts
+  - name: Print eastus_publishers_facts
+    debug:
+      var: eastus_publishers_facts

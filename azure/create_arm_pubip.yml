@@ -1,0 +1,8 @@
+- hosts: local
+  tasks:
+  - name: Create a Public IP address
+    azure_rm_publicipaddress:
+      resource_group: testing
+      name: ktxpubip007
+      allocation_method: Static
+      domain_name: ktxdn

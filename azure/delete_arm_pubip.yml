@@ -1,0 +1,10 @@
+- hosts: local
+  vars:
+    pubip: ktxpubip007
+  tasks:
+  - name: Delete Public IP Address {{ pubip }}
+    azure_rm_publicipaddress:
+      name: ktxpubip007
+      state: absent
+      resource_group: testing
+  

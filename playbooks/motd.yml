@@ -1,0 +1,8 @@
+---
+- hosts: vagranthosts
+  tasks:
+  - name: copy the template
+    template:
+      src: templates/welcome.j2
+      dest: /etc/motd
+      mode: 0644

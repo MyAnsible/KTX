@@ -1,0 +1,7 @@
+- hosts: local
+  tasks:
+  - name: Terminate Virtual Machine {{ armvm }}
+    azure_rm_virtualmachine:
+      resource_group: testing
+      name: "{{ armvm }}"
+      state: absent

@@ -1,0 +1,7 @@
+- hosts: local
+  tasks:
+  - name: Start the virtual machine {{ armvm }}
+    azure_rm_virtualmachine:
+      resource_group: testing
+      name: "{{ armvm }}"
+      restarted: yes

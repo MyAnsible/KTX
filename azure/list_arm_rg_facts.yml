@@ -1,0 +1,9 @@
+- hosts: local
+  tasks:
+  - name: List Resource group facts
+    azure_rm_resourcegroup_facts:
+      name: testing
+    register: rgfacts
+  - name: Print rgfacts
+    debug:
+       var: rgfacts

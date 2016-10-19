@@ -1,0 +1,10 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Create a resource group
+    azure_rm_resourcegroup:
+      name: testing
+      location: eastus
+      tags:
+        testing: testing
+        delete: never

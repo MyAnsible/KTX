@@ -1,0 +1,10 @@
+- hosts: local
+  vars:
+    sn: ktxsn007
+  tasks:
+  - name: delete subnet {{ sn }}
+    azure_rm_subnet:
+      name: "{{ sn }}"
+      virtual_network_name: ktxvn
+      resource_group: testing
+      state: absent

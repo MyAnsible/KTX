@@ -1,0 +1,8 @@
+- hosts: local
+  tasks:
+  - name: Delete storage account {{ sa }}
+    azure_rm_storageaccount:
+      resource_group: testing
+      name: "{{ sa }}"
+      state: absent
+

@@ -1,0 +1,10 @@
+- hosts: local
+  tasks:
+  - name: List Public IP Address facts
+    azure_rm_publicipaddress_facts:
+      resource_group: testing
+      name: ktxpubip007
+    register: pubipfacts
+  - name: Print pubipfacts
+    debug:
+       var: pubipfacts

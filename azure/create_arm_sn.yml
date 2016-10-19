@@ -1,0 +1,8 @@
+- hosts: local
+  tasks:
+  - name: Create subnet
+    azure_rm_subnet:
+      resource_group: testing
+      name: ktxsn007
+      virtual_network_name: ktxvn
+      address_prefix_cidr: "10.1.0.0/16"

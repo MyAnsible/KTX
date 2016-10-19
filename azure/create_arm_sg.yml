@@ -1,0 +1,21 @@
+- hosts: local
+  tasks:
+  - name: Create Security group
+    azure_rm_securitygroup:
+      resource_group: testing
+      name: ktxsecgroup
+      purge_rules: yes
+      rules:
+          - name: DenySSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Deny
+            priority: 100
+            direction: Inbound
+          - name: 'AllowSSH'
+            protocol: Tcp
+            source_address_prefix: '174.109.158.0/24'
+            destination_port_range: 22
+            access: Allow
+            priority: 101
+            direction: Inbound

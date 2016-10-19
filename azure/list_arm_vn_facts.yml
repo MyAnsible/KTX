@@ -1,0 +1,10 @@
+- hosts: local
+  tasks:
+  - name: List Virtual Network facts
+    azure_rm_virtualnetwork_facts:
+      resource_group: testing
+      name: ktxvn
+    register: vnfacts
+  - name: Print vnfacts
+    debug:
+       var: vnfacts
