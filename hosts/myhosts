@@ -1,0 +1,20 @@
+[local]
+localhost
+
+[vagranthosts]
+mnode1 ansible_host=192.168.50.101
+mnode2 ansible_host=192.168.50.102
+mnode3 ansible_host=192.168.50.103
+mnode4 ansible_host=192.168.50.104
+
+[oddvagrant]
+mnode1 ansible_host=192.168.50.101
+mnode3 ansible_host=192.168.50.103 
+
+[evenvagrant]
+mnode2 ansible_host=192.168.50.102
+mnode4 ansible_host=192.168.50.104
+
+[vagrant:children]
+oddvagrant
+evenvagrant

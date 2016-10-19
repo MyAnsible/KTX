@@ -1,0 +1,9 @@
+- hosts: mnode4
+  gather_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+   - name: Install the {{ package }} package
+     yum:
+       name: "{{ package }}"
+       state: latest

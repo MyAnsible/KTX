@@ -1,7 +1,0 @@
-[local]
-localhost ansible_connection=local ansible_user=rgodishela
-
-[VirtualBox]
-192.168.2.114
-192.168.2.115
-192.168.2.116
