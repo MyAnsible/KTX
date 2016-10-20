@@ -14,7 +14,7 @@
     ignore_errors: yes
     register: result
 
-  - name: Restart Apache2 if postfix running
+  - name: Restart httpd if postfix running
     service:
        name: httpd
        state: restarted
